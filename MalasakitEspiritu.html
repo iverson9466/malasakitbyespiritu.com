@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malasakit by - Iverson - Healthcare Access for All Filipinos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #9370DB;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo::before {
+            content: "🏥";
+            margin-right: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #E6E6FA;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #E6E6FA;
+        }
+
+        .login-btn {
+            background: rgba(255,255,255,0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .login-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #9370DB;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #FFFFFF;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,128,128,0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #FFFFFF;
+            margin-bottom: 1rem;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #9370DB, #E6E6FA) ;
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #FFFFFF ;
+        }
+
+        .features-grid {
+            display: Grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #FFFFFF;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-text h3 {
+            color: #9370DB;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .about-text h3:first-child {
+            margin-top: 0;
+        }
+
+        .about-text p {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            color: #9370DB;
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            border-radius: 10px;
+            border-left: 4px solid #FFFFFF;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #FFFFFF;
+        }
+
+        .about-image {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mission-card, .contact-card {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,128,128,0.2);
+        }
+
+        .mission-card h4, .contact-card h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .mission-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .mission-card li {
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            position: relative;
+        }
+
+        .mission-card li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: linear-gradient(135deg, #9370DB, #E6E6FA);;
+            font-weight: bold;
+        }
+
+        .contact-card p {
+            margin-bottom: 0.8rem;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hospital-network h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color:#9370DB;
+        }
+
+        .hospital-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .hospital-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .hospital-card:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #9370DB;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #9370DB;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #9370DB;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #9370DB, #E6E6FA);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+            padding: 120px 0 80px;
+            background: #9370DB;
+        }
+
+        .dashboard-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .dashboard-card {
+            background: #9370DB;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .dashboard-card h3 {
+            color: #9370DB;
+            margin-bottom: 1rem;
+        }
+
+        .appointment-btn {
+            background: #9370DB;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .appointment-btn:hover {
+            background: #9370DB;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Malasakit by - Iverson</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#hospitals">Hospitals</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#" class="login-btn" onclick="showLoginModal()">Login / Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container">
+                <h1>We, Filipinos Deserve a Better Healthcare System</h1>
+                <p>Skip the long queues. Book appointments online. Get financial assistance. Access laboratory services across the Philippines.</p>
+                <a href="#services" class="cta-button">Get Started Today</a>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <div class="container">
+                <h2>Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card" onclick="showAppointmentModal('doctor')">
+                        <div class="service-icon">👨‍⚕️</div>
+                        <h3>Doctor Appointments</h3>
+                        <p>Book appointments with doctors in public and private hospitals nationwide. No more long waiting times.</p>
+                    </div>
+                    <div class="service-card" onclick="showAppointmentModal('lab')">
+                        <div class="service-icon">🔬</div>
+                        <h3>Laboratory Services</h3>
+                        <p>Schedule laboratory tests and medical examinations at your preferred hospital or clinic.</p>
+                    </div>
+                    <div class="service-card" onclick="showFinancialModal()">
+                        <div class="service-icon">💰</div>
+                        <h3>Financial Assistance</h3>
+                        <p>Apply for government medical financial assistance programs and get support for your healthcare needs.</p>
+                    </div>
+                    <div class="service-card" onclick="showHospitalizationModal()">
+                        <div class="service-icon">🏥</div>
+                        <h3>Hospitalization Support</h3>
+                        <p>Get assistance with hospital admissions, bed availability, and support during your hospital stay.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2>Why Choose Malasakit by - Iverson?</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">🆓</div>
+                        <h3>Completely Free</h3>
+                        <p>All services are provided free of charge, supported by the government for all Filipinos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">📱</div>
+                        <h3>Easy Access</h3>
+                        <p>User-friendly platform accessible from any device, anywhere in the Philippines.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Skip the Queue</h3>
+                        <p>Avoid long waiting times with our online booking and scheduling system.</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🌐</div>
+                        <h3>Nationwide Network</h3>
+                        <p>Connected to public and private hospitals across all regions of the Philippines.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hospital-network" id="hospitals">
+            <div class="container">
+                <h2>Hospital Network</h2>
+                <p style="text-align: center; font-size: 1.1rem; margin-bottom: 2rem;">Connected to major hospitals across the Philippines</p>
+                <div class="hospital-grid">
+                    <div class="hospital-card">
+                        <h4>🏥 Philippine General Hospital</h4>
+                        <p>Manila</p>
+                    </div>
+                    <div class="hospital-card">
+                        <h4>🏥 Vicente Sotto Memorial</h4>
+                        <p>Cebu</p>
+                    </div>
+                    <div class="hospital-card">
+                        <h4>🏥 Southern Philippines Medical</h4>
+                        <p>Davao</p>
+                    </div>
+                    <div class="hospital-card">
+                        <h4>🏥 Makati Medical Center</h4>
+                        <p>Makati</p>
+                    </div>
+                    <div class="hospital-card">
+                        <h4>🏥 St. Luke's Medical Center</h4>
+                        <p>Quezon City</p>
+                    </div>
+                    <div class="hospital-card">
+                        <h4>🏥 Asian Hospital</h4>
+                        <p>Muntinlupa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <div class="container">
+                <h2>About Malasakit by - Iverson</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Mission</h3>
+                        <p>Malasakit by - Iverson is a government-backed healthcare platform designed to revolutionize how Filipinos access medical services. Born from the spirit of "Malasakit" - compassionate care for all - our platform bridges the gap between patients and healthcare providers across the Philippines.</p>
+                        
+                        <h3>What We Do</h3>
+                        <p>We eliminate the barriers that prevent Filipinos from accessing quality healthcare. Through our digital platform, we connect patients with doctors, streamline laboratory appointments, provide financial assistance applications, and offer hospitalization support - all completely free of charge.</p>
+                        
+                        <h3>Our Impact</h3>
+                        <div class="impact-stats">
+                            <div class="stat-item">
+                                <div class="stat-number">1000+</div>
+                                <div class="stat-label">Partner Hospitals</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">200K+</div>
+                                <div class="stat-label">Patients Served</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">₱100M+</div>
+                                <div class="stat-label">Financial Assistance</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">16</div>
+                                <div class="stat-label">Regions Covered</div>
+                            </div>
+                        </div>
+                        
+                        <h3>Our Vision</h3>
+                        <p>A Philippines where every Filipino has equal access to quality healthcare, regardless of their economic status or geographic location. We envision a future where technology serves as the bridge to better health outcomes for all.</p>
+                        
+                        <h3>Government Partnership</h3>
+                        <p>Malasakit by - Iverson is proudly supported by the Philippine government in partnership with the Department of Health, Philippine Health Insurance Corporation (PhilHealth), and local government units nationwide. Together, we're building a healthier Philippines.</p>
+                    </div>
+                    
+                    <div class="about-image">
+                        <div class="mission-card">
+                            <h4>🎯 Our Core Values</h4>
+                            <ul>
+                                <li><strong>Accessibility:</strong> Healthcare for all Filipinos</li>
+                                <li><strong>Efficiency:</strong> Streamlined processes, no more queues</li>
+                                <li><strong>Compassion:</strong> Caring with malasakit</li>
+                                <li><strong>Innovation:</strong> Technology for better health</li>
+                                <li><strong>Integrity:</strong> Transparent and trustworthy</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <h4>📞 Contact Us</h4>
+                            <p><strong>Hotline:</strong> 09665886522</p>
+                            <p><strong>Email:</strong> iespiritu9466qc@student.fatima.edu.ph</p>
+                            <p><strong>Address:</strong> DOH Building, San Lazaro Compound, Sta. Cruz, Manila</p>
+                            <p><strong>Office Hours:</strong> Monday-Friday, 8:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section (Hidden by default) -->
+        <section class="dashboard" id="dashboard">
+            <div class="container">
+                <div class="dashboard-header">
+                    <h2>Welcome to Your Dashboard</h2>
+                    <p>Manage your appointments and access healthcare services</p>
+                </div>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>📅 My Appointments</h3>
+                        <p>View and manage your upcoming doctor and lab appointments</p>
+                        <button class="appointment-btn">View Appointments</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>💊 Medical Records</h3>
+                        <p>Access your medical history and test results</p>
+                        <button class="appointment-btn">View Records</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>💰 Financial Status</h3>
+                        <p>Check your assistance applications and status</p>
+                        <button class="appointment-btn">Check Status</button>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>🏥 Find Hospitals</h3>
+                        <p>Search for hospitals and available services near you</p>
+                        <button class="appointment-btn">Find Hospitals</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Malasakit by - Iverson -  Espiritu, Iverson Arnel Y. BSN-2-Y2-17</p>
+        </div>
+    </footer>
+
+    <!-- Login/Signup Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">&times;</span>
+            <h2 style="color: #008080; margin-bottom: 1rem;">Login / Sign Up</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email">Email or Phone Number:</label>
+                    <input type="text" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+            <p style="text-align: center; margin-top: 1rem;">
+                Don't have an account? <a href="#" onclick="showSignupModal()" style="color: #008080;">Sign up here</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('signupModal')">&times;</span>
+            <h2 style="color: #008080; margin-bottom: 1rem;">Create Account</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail">Email:</label>
+                    <input type="email" id="signupEmail" name="signupEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword">Password:</label>
+                    <input type="password" id="signupPassword" name="signupPassword" required>
+                </div>
+                <button type="submit" class="submit-btn">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Appointment Modal -->
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('appointmentModal')">&times;</span>
+            <h2 style="color: #008080; margin-bottom: 1rem;" id="appointmentTitle">Book Appointment</h2>
+            <form id="appointmentForm">
+                <div class="form-group">
+                    <label for="appointmentType">Service Type:</label>
+                    <select id="appointmentType" name="appointmentType" required>
+                        <option value="">Select Service</option>
+                        <option value="doctor">Doctor Consultation</option>
+                        <option value="lab">Laboratory Test</option>
+                        <option value="specialist">Specialist</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="hospital">Hospital:</label>
+                    <select id="hospital" name="hospital" required>
+                        <option value="">Select Hospital</option>
+                        <option value="pgh">Philippine General Hospital</option>
+                        <option value="vsm">Vicente Sotto Memorial</option>
+                        <option value="spm">Southern Philippines Medical</option>
+                        <option value="mmc">Makati Medical Center</option>
+                        <option value="slmc">St. Luke's Medical Center</option>
+                        <option value="asian">Asian Hospital</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentDate">Preferred Date:</label>
+                    <input type="date" id="appointmentDate" name="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Preferred Time:</label>
+                    <input type="time" id="appointmentTime" name="appointmentTime" required>
+                </div>
+                <button type="submit" class="submit-btn">Book Appointment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Financial Assistance Modal -->
+    <div id="financialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('financialModal')">&times;</span>
+            <h2 style="color: #008080; margin-bottom: 1rem;">Financial Assistance Application</h2>
+            <form id="financialForm">
+                <div class="form-group">
+                    <label for="assistanceType">Type of Assistance:</label>
+                    <select id="assistanceType" name="assistanceType" required>
+                        <option value="">Select Type</option>
+                        <option value="medical">Medical Treatment</option>
+                        <option value="surgery">Surgery</option>
+                        <option value="medication">Medication</option>
+                        <option value="dialysis">Dialysis</option>
+                        <option value="emergency">Emergency Care</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="estimatedCost">Estimated Cost (PHP):</label>
+                    <input type="number" id="estimatedCost" name="estimatedCost" required>
+                </div>
+                <div class="form-group">
+                    <label for="familyIncome">Monthly Family Income (PHP):</label>
+                    <input type="number" id="familyIncome" name="familyIncome" required>
+                </div>
+                <div class="form-group">
+                    <label for="reason">Reason for Assistance:</label>
+                    <input type="text" id="reason" name="reason" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function showLoginModal() {
+            document.getElementById('loginModal').style.display = 'block';
+        }
+
+        function showSignupModal() {
+            closeModal('loginModal');
+            document.getElementById('signupModal').style.display = 'block';
+        }
+
+        function showAppointmentModal(type) {
+            const title = type === 'doctor' ? 'Book Doctor Appointment' : 'Book Laboratory Test';
+            document.getElementById('appointmentTitle').textContent = title;
+            document.getElementById('appointmentModal').style.display = 'block';
+        }
+
+        function showFinancialModal() {
+            document.getElementById('financialModal').style.display = 'block';
+        }
+
+        function showHospitalizationModal() {
+            alert('Hospitalization support feature coming soon! Please contact your nearest hospital for immediate assistance.');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modals = document.getElementsByClassName('modal');
+            for (let i = 0; i < modals.length; i++) {
+                if (event.target === modals[i]) {
+                    modals[i].style.display = 'none';
+                }
+            }
+        }
+
+        // Form submissions
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulate login
+            if (email && password) {
+                alert('Login successful! Welcome to your dashboard.');
+                closeModal('loginModal');
+                showDashboard();
+            }
+        });
+
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('signupEmail').value;
+            const phone = document.getElementById('phoneNumber').value;
+            const password = document.getElementById('signupPassword').value;
+            
+            // Simulate signup
+            if (fullName && email && phone && password) {
+                alert('Account created successfully! Welcome to Malacare.');
+                closeModal('signupModal');
+                showDashboard();
+            }
+        });
+
+        document.getElementById('appointmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const type = document.getElementById('appointmentType').value;
+            const hospital = document.getElementById('hospital').value;
+            const date = document.getElementById('appointmentDate').value;
+            const time = document.getElementById('appointmentTime').value;
+            
+            if (type && hospital && date && time) {
+                alert('Appointment booked successfully! You will receive a confirmation message shortly.');
+                closeModal('appointmentModal');
+                this.reset();
+            }
+        });
+
+        document.getElementById('financialForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const type = document.getElementById('assistanceType').value;
+            const cost = document.getElementById('estimatedCost').value;
+            const income = document.getElementById('familyIncome').value;
+            const reason = document.getElementById('reason').value;
+            
+            if (type && cost && income && reason) {
+                alert('Financial assistance application submitted successfully! You will be contacted within 3-5 business days.');
+                closeModal('financialModal');
+                this.reset();
+            }
+        });
+
+        function showDashboard() {
+            // Hide main content and show dashboard
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.services').style.display = 'none';
+            document.querySelector('.features').style.display = 'none';
+            document.querySelector('.hospital-network').style.display = 'none';
+            document.querySelector('.dashboard').style.display = 'block';
+            
+            // Update navigation
+            document.querySelector('.login-btn').textContent = 'Logout';
+            document.querySelector('.login-btn').onclick = function() {
+                location.reload();
+            };
+        }
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Set minimum date for appointments to today
+        document.getElementById('appointmentDate').setAttribute('min', new Date().toISOString().split('T')[0]);
+    </script>
+</body>
+</html>
